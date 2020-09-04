@@ -2,10 +2,10 @@ name: poiBuild
 
 on: 
  push:
+    paths:  
+     - ./apis/poi/**
     branches:
-      - master
-    paths:
-      - ./apis/poi
+      - master    
  pull_request:
     branches:
       - master
