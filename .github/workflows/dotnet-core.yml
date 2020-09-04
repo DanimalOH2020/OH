@@ -4,7 +4,13 @@ on:
  push: 
    paths:
     - 'apis/poi/**'
- 
+   branches:
+    - master
+ pull_request:
+    branches:
+      - master
+    paths:
+      - 'apis/poi/**'
     
 jobs:
   build:
