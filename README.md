@@ -1,5 +1,5 @@
 # Project Name
-test 2 3 4 5
+test 2 3 4 5 6
 The DevOps open hack event is designed to foster learning via implementing DevOps practices with a series of challenges.
 
 ## Architecture
