@@ -1,14 +1,10 @@
 name: poiBuild
 
 on: 
- push:
-    branches:
-      - master    
- pull_request:
-    branches:
-      - master
-    paths:
-      - poi/**
+ push: 
+   paths:
+    - 'poi/**'
+ 
     
 jobs:
   build:
