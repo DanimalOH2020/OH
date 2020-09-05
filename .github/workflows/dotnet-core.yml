@@ -23,13 +23,13 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.1
-    #- name: Install dependencies
-    #  working-directory: ./apis/poi
-    #  run: dotnet restore
-    #- name: Build
-    #  working-directory: ./apis/poi
-    #  run: dotnet build --configuration Release --no-restore
-    #- name: Test
-    #  working-directory: ./apis/poi/tests/UnitTests
-    #  run: dotnet test
+    - name: Install dependencies
+      working-directory: ./apis/poi
+      run: dotnet restore
+    - name: Build
+      working-directory: ./apis/poi
+      run: dotnet build --configuration Release --no-restore
+    - name: Test
+      working-directory: ./apis/poi/tests/UnitTests
+      run: dotnet test
 
