@@ -19,8 +19,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-      name: Set selected color
+        
+      - name: Azure Login
         run: echo '::set-env name=SELECTED_COLOR::green'
 
     # - name: Azure Login
