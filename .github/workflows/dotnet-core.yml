@@ -41,7 +41,7 @@ jobs:
         with:
           azcliversion: 2.0.72
           inlineScript: |
-            az acr build --image "openhacks3u8wqs3acr.azurecr.io/api-poi:$GITHUB_RUN_NUMBER" --registry openhacks3u8wqs3acr --file Dockerfile .
+            az acr build --image "openhacks3u8wqs3acr.azurecr.io/api-poi:{{$GITHUB_RUN_NUMBER}}" --registry openhacks3u8wqs3acr --file Dockerfile .
 
           
 
