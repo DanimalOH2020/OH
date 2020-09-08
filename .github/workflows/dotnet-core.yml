@@ -20,8 +20,8 @@ jobs:
 
     steps:
         
-      - name: Azure Login
-        run: echo $GITHUB_RUN_NUMBER
+    - name: Azure Login
+      run: echo $GITHUB_RUN_NUMBER
         
     - name: Azure Login
       uses: azure/login@v1
@@ -36,8 +36,8 @@ jobs:
           az account show
           az storage -h
 
-      - name: Build container
-          run: az acr build --image "openhacks3u8wqs3acr.azurecr.io/api-poi:$GITHUB_RUN_NUMBER" --registry openhacks3u8wqs3acr --file Dockerfile .
+    - name: Build container
+        run: az acr build --image "openhacks3u8wqs3acr.azurecr.io/api-poi:$GITHUB_RUN_NUMBER" --registry openhacks3u8wqs3acr --file Dockerfile .
           
 
 
