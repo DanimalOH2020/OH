@@ -45,17 +45,15 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     
-
-
     - name: Azure CLI script
-      workingDirectory: ./apis/poi/tests/UnitTests    
       uses: azure/CLI@v1
+      working-directory: ./apis/poi
       with:
         azcliversion: 2.0.72
         inlineScript: |
           az account show
           az storage -h
-          az acr build --image "openhacks3u8wqs3acr.azurecr.io/api-poi" --registry openhacks3u8wqs3acr --file Dockerfile .
+          az acr build --image "openhacks3u8wqs3acr.azurecr.io/api-poi" --registry openhacks3u8wqs3acr --file ./apis/poi/web/Dockerfile .
 
     # - name: Build container
     #     uses: azure/CLI@v1
