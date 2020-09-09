@@ -89,7 +89,7 @@ jobs:
         inlineScript: |
           az account show
           az storage -h
-          az webapp config container set --name openhacks3u8wqs3poi --resource-group openhacks3u8wqs3rg --docker-custom-image-name "openhacks3u8wqs3acr.azurecr.io/devopsoh/api-poi:$GITHUB_RUN_NUMBER" --docker-registry-server-url ${{ secrets.REGISTRY_LOGIN_SERVER }} --docker-registry-server-user ${{ secrets.REGISTRY_USERNAME }} --docker-registry-server-password ${{ secrets.REGISTRY_PASSWORD }}
+          az webapp config container set --name openhacks3u8wqs3poi --resource-group openhacks3u8wqs3rg --docker-custom-image-name "openhacks3u8wqs3acr.azurecr.io/devopsoh/api-poi:$GITHUB_RUN_NUMBER" --docker-registry-server-url ${{ secrets.REGISTRY_LOGIN_SERVER }} --docker-registry-server-user ${{ secrets.REGISTRY_USERNAME }} --docker-registry-server-password ${{ secrets.REGISTRY_PASSWORD }} --slot staging
 
     - name: curl
       uses: wei/curl@master
@@ -100,7 +100,7 @@ jobs:
       uses: jakejarvis/wait-action@master
       with:
         time: '30s'
-        
+
     - name: curl
       uses: wei/curl@master
       with:
