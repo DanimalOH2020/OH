@@ -2,13 +2,13 @@ FROM microsoft/dotnet:2.1-sdk AS build-env
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
-COPY /oh/apis/poi/web/*.csproj ./
+COPY *.csproj ./
 RUN dotnet restore
 
 # copy everything else and build
-COPY /oh/apis/poi/. ./
+COPY . ./
 RUN dotnet publish -c Release -o out
-COPY /oh/apis/poi/web/appsettings.*.json /app/out/
+COPY ./appsettings.*.json /app/out/
 COPY ./appsettings.json /app/out/
 
 # build runtime image
