@@ -70,7 +70,7 @@ jobs:
         inlineScript: |
           az account show
           az storage -h
-          az acr build --image "openhacks3u8wqs3acr.azurecr.io/api-poi" --registry openhacks3u8wqs3acr --file Dockerfile .
+          az acr build --image "openhacks3u8wqs3acr.azurecr.io/api-poi" --registry openhacks3u8wqs3acr --file /web/Dockerfile .
 
     # - name: Build container
     #     uses: azure/CLI@v1
