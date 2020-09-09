@@ -25,13 +25,13 @@ jobs:
       with:
         dotnet-version: 2.1
 
-    - name: Install dependencies
-      working-directory: ./apis/poi
-      run: dotnet restore
+    # - name: Install dependencies
+    #   working-directory: ./apis/poi
+    #   run: dotnet restore
 
-    - name: Build
-      working-directory: ./apis/poi
-      run: dotnet build --configuration Release --no-restore
+    # - name: Build
+    #   working-directory: ./apis/poi
+    #   run: dotnet build --configuration Release --no-restore
 
     # - name: Test
     #   working-directory: ./apis/poi/tests/UnitTests
@@ -39,6 +39,19 @@ jobs:
 
     - name: ls
       run: ls
+
+    - name: cd
+      run: cd\
+      
+    - name: ls
+      run: ls
+
+    - name: cd
+      run: cd /home/runner/work/OH/OH/apis/poi/web
+
+    - name: ls
+      run: ls
+      
 
     # - name: Azure Login
     #   run: echo $GITHUB_RUN_NUMBER
