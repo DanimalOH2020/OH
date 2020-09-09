@@ -37,17 +37,11 @@ jobs:
     #   working-directory: ./apis/poi/tests/UnitTests
     #   run: dotnet test
 
-    - name: ls
-      run: ls
-
     - name: cd
       run: cd\
-      
-    - name: ls
-      run: ls
-
+    
     - name: cd
-      run: cd /home/runner/work/OH/OH/apis/poi/web
+      run: cd apis
 
     - name: ls
       run: ls
