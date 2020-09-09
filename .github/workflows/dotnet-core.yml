@@ -18,7 +18,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./apis/poi
+        working-directory: ./apis/poi/web
 
     runs-on: ubuntu-latest
 
@@ -32,17 +32,17 @@ jobs:
     - name: ls
       run: ls
 
-    - name: Install dependencies
-      working-directory: ./apis/poi
-      run: dotnet restore
+    # - name: Install dependencies
+    #   working-directory: ./apis/poi
+    #   run: dotnet restore
 
-    - name: Build
-      working-directory: ./apis/poi
-      run: dotnet build --configuration Release --no-restore
+    # - name: Build
+    #   working-directory: ./apis/poi
+    #   run: dotnet build --configuration Release --no-restore
 
-    - name: Test
-      working-directory: ./apis/poi/tests/UnitTests
-      run: dotnet test
+    # - name: Test
+    #   working-directory: ./apis/poi/tests/UnitTests
+    #   run: dotnet test
 
 
     # - name: cd
@@ -55,7 +55,7 @@ jobs:
     #   run: ls
       
 
-    - name: Azure Login
+    - name: Build Info
       run: echo $GITHUB_RUN_NUMBER
         
     - name: Azure Login
@@ -70,7 +70,7 @@ jobs:
         inlineScript: |
           az account show
           az storage -h
-          az acr build --image "openhacks3u8wqs3acr.azurecr.io/api-poi" --registry openhacks3u8wqs3acr --file /web/Dockerfile .
+          az acr build --image "openhacks3u8wqs3acr.azurecr.io/api-poi" --registry openhacks3u8wqs3acr --file Dockerfile .
 
     # - name: Build container
     #     uses: azure/CLI@v1
