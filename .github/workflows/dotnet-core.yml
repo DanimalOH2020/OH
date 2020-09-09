@@ -75,28 +75,36 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Azure WebApp
-      uses: Azure/webapps-deploy@v2
-      with:
-        app-name: openhacks3u8wqs3poi
-        slot-name: staging
-        images: ${{ secrets.REGISTRY_LOGIN_SERVER }}/devopsoh/api-poi:${{GITHUB_RUN_NUMBER}}
-
-
-        
-
-
-    # - name: Azure CLI script
-    #   uses: azure/CLI@v1
+    # - name: Azure WebApp
+    #   uses: Azure/webapps-deploy@v2
     #   with:
-    #     azcliversion: 2.0.72
-    #     inlineScript: |
-    #       az account show
-    #       az storage -h
-    #       az webapp config container set --name openhacks3u8wqs3poi --resource-group openhacks3u8wqs3rg --docker-custom-image-name "openhacks3u8wqs3acr.azurecr.io/api-poi:$GITHUB_RUN_NUMBER" --docker-registry-server-url ${{ secrets.REGISTRY_LOGIN_SERVER }} --docker-registry-server-user ${{ secrets.REGISTRY_USERNAME }} --docker-registry-server-password ${{ secrets.REGISTRY_PASSWORD }}
-      
+    #     app-name: openhacks3u8wqs3poi
+    #     slot-name: staging
+    #     images: ${{ secrets.REGISTRY_LOGIN_SERVER }}/devopsoh/api-poi:$GITHUB_RUN_NUMBER
 
-          
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.0.72
+        inlineScript: |
+          az account show
+          az storage -h
+          az webapp config container set --name openhacks3u8wqs3poi --resource-group openhacks3u8wqs3rg --docker-custom-image-name "openhacks3u8wqs3acr.azurecr.io/devopsoh/api-poi:$GITHUB_RUN_NUMBER" --docker-registry-server-url ${{ secrets.REGISTRY_LOGIN_SERVER }} --docker-registry-server-user ${{ secrets.REGISTRY_USERNAME }} --docker-registry-server-password ${{ secrets.REGISTRY_PASSWORD }}
+
+    - name: curl
+      uses: wei/curl@master
+      with:
+        args: https://openhacks3u8wqs3poi-staging.azurewebsites.net/api/healthcheck/poi
+
+    - name: Sleep for 30 seconds
+      uses: jakejarvis/wait-action@master
+      with:
+        time: '30s'
+         
+  -   name: curl
+      uses: wei/curl@master
+      with:
+        args: https://openhacks3u8wqs3poi-staging.azurewebsites.net/api/healthcheck/poi
 
 
 
