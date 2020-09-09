@@ -68,7 +68,8 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
         docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/devopsoh/api-poi:$GITHUB_RUN_NUMBER -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/devopsoh/api-poi:latest
-        docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/devopsoh/api-poi:$GITHUB_RUN_NUMBER
+        docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/devopsoh/api-poi:$GITHUB_RUN_NUMBER 
+        docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/devopsoh/api-poi:latest
 
 
 
