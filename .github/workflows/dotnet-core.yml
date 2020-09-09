@@ -19,26 +19,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: ls
-      run: ls
+    - uses: actions/checkout@v2    
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.1
 
-    # - uses: actions/checkout@v2    
-    # - name: Setup .NET Core
-    #   uses: actions/setup-dotnet@v1
-    #   with:
-    #     dotnet-version: 2.1
+    - name: Install dependencies
+      working-directory: ./apis/poi
+      run: dotnet restore
 
-    # - name: Install dependencies
-    #   working-directory: ./apis/poi
-    #   run: dotnet restore
-
-    # - name: Build
-    #   working-directory: ./apis/poi
-    #   run: dotnet build --configuration Release --no-restore
+    - name: Build
+      working-directory: ./apis/poi
+      run: dotnet build --configuration Release --no-restore
 
     # - name: Test
     #   working-directory: ./apis/poi/tests/UnitTests
     #   run: dotnet test
+
+    - name: ls
+      run: ls
 
     # - name: Azure Login
     #   run: echo $GITHUB_RUN_NUMBER
