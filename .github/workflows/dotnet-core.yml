@@ -67,9 +67,9 @@ jobs:
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
-        docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/devopsoh/api-poi:$GITHUB_RUN_NUMBER -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/devopsoh/api-poi:latest
+        docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/devopsoh/api-poi:$GITHUB_RUN_NUMBER
         docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/devopsoh/api-poi:$GITHUB_RUN_NUMBER 
-        docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/devopsoh/api-poi:latest
+        
 
 
     - name: Azure Login
@@ -85,7 +85,7 @@ jobs:
         inlineScript: |
           az account show
           az storage -h
-          az webapp deployment container config --enable-cd false --name openhacks3u8wqs3poi --resource-group openhacks3u8wqs3rg  -s staging
+          az webapp config container set --name openhacks3u8wqs3poi --resource-group openhacks3u8wqs3rg --docker-custom-image-name "openhacks3u8wqs3acr.azurecr.io/api-poi:$GITHUB_RUN_NUMBER" --docker-registry-server-url ${{ secrets.REGISTRY_LOGIN_SERVER }} --docker-registry-server-user ${{ secrets.REGISTRY_USERNAME }} --docker-registry-server-password ${{ secrets.REGISTRY_PASSWORD }}
       
 
           
