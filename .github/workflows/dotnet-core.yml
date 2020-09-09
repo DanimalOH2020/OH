@@ -28,20 +28,22 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.1
-
-    # - name: Install dependencies
-    #   working-directory: ./apis/poi
-    #   run: dotnet restore
-
-    # - name: Build
-    #   working-directory: ./apis/poi
-    #   run: dotnet build --configuration Release --no-restore
-
-    # - name: Test
-    #   working-directory: ./apis/poi/tests/UnitTests
-    #   run: dotnet test
+        
     - name: ls
-      run: ls
+        run: ls
+
+    - name: Install dependencies
+      working-directory: ./apis/poi
+      run: dotnet restore
+
+    - name: Build
+      working-directory: ./apis/poi
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Test
+      working-directory: ./apis/poi/tests/UnitTests
+      run: dotnet test
+
 
     # - name: cd
     #   run: cd\
@@ -53,22 +55,22 @@ jobs:
     #   run: ls
       
 
-    # - name: Azure Login
-    #   run: echo $GITHUB_RUN_NUMBER
+    - name: Azure Login
+      run: echo $GITHUB_RUN_NUMBER
         
-    # - name: Azure Login
-    #   uses: azure/login@v1
-    #   with:
-    #     creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
     
-    # - name: Azure CLI script
-    #   uses: azure/CLI@v1
-    #   with:
-    #     azcliversion: 2.0.72
-    #     inlineScript: |
-    #       az account show
-    #       az storage -h
-    #       az acr build --image "openhacks3u8wqs3acr.azurecr.io/api-poi" --registry openhacks3u8wqs3acr --file ./apis/poi/web/Dockerfile .
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.0.72
+        inlineScript: |
+          az account show
+          az storage -h
+          az acr build --image "openhacks3u8wqs3acr.azurecr.io/api-poi" --registry openhacks3u8wqs3acr --file Dockerfile .
 
     # - name: Build container
     #     uses: azure/CLI@v1
