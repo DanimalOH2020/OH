@@ -30,7 +30,7 @@ jobs:
         dotnet-version: 2.1
         
     - name: ls
-        run: ls
+      run: ls
 
     - name: Install dependencies
       working-directory: ./apis/poi
