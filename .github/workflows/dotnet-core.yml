@@ -100,11 +100,12 @@ jobs:
       uses: jakejarvis/wait-action@master
       with:
         time: '30s'
-         
-  -   name: curl
+        
+    - name: curl
       uses: wei/curl@master
       with:
         args: https://openhacks3u8wqs3poi-staging.azurewebsites.net/api/healthcheck/poi
+
 
 
 
