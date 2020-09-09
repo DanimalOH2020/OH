@@ -72,20 +72,22 @@ jobs:
         docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/devopsoh/api-poi:latest
 
 
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    # - name: Azure Login
-    #   uses: azure/login@v1
-    #   with:
-    #     creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.0.72
+        inlineScript: |
+          az account show
+          az storage -h
+          az webapp deployment container config --enable-cd false --name openhacks3u8wqs3poi --resource-group openhacks3u8wqs3rg  -s staging
+      
 
-    # - name: Azure CLI script
-    #   uses: azure/CLI@v1
-    #   with:
-    #     azcliversion: 2.0.72
-    #     inlineScript: |
-    #       az account show
-    #       az storage -h
           
 
 
