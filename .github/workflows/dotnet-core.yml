@@ -106,22 +106,7 @@ jobs:
       with:
         azcliversion: 2.0.72
         inlineScript: |
-        az webapp deployment slot swap --name openhacks3u8wqs3poi  --resource-group openhacks3u8wqs3rg --slot staging --target-slot production
-
-
-
-    # - name: Build container
-    #     uses: azure/CLI@v1
-    #     with:
-    #       azcliversion: 2.0.72
-    #       inlineScript: |
-    #         az acr build --image "openhacks3u8wqs3acr.azurecr.io/api-poi:{{$GITHUB_RUN_NUMBER}}" --registry openhacks3u8wqs3acr --file Dockerfile .
-
-          
-
-
-
-          
+          az webapp deployment slot swap --name openhacks3u8wqs3poi  --resource-group openhacks3u8wqs3rg --slot staging --target-slot production
 
 
 
