@@ -94,14 +94,19 @@ jobs:
     - name: Sleep for 30 seconds
       uses: jakejarvis/wait-action@master
       with:
-        time: '600s'
+        time: '300s'
 
     - name: curl
       uses: wei/curl@master
       with:
         args: https://openhacks3u8wqs3poi-staging.azurewebsites.net/api/healthcheck/poi
 
-    
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.0.72
+        inlineScript: |
+        az webapp deployment slot swap --name openhacks3u8wqs3poi  --resource-group openhacks3u8wqs3rg --slot staging --target-slot production
 
 
 
